@@ -45,7 +45,7 @@ jobs:
         $vswhere = "${env:ProgramFiles(x86)}\Microsoft Visual Studio\Installer\vswhere.exe"
         $vsPath = & $vswhere -latest -products * -requires Microsoft.VisualStudio.Component.VC.Tools.x86.x64 -property installationPath
         $vcvars = Join-Path $vsPath "VC\Auxiliary\Build\vcvarsall.bat"
-        $include = "install\include"
+        $include = "build\install\include"
         $cSrc = "#include <lensfun/lensfun.h>`nint main(void){ return 0; }"
         $cppSrc = "#include <lensfun/lensfun.h>`nint main(){ return 0; }"
         Set-Content -Path consumer.c -Value $cSrc
