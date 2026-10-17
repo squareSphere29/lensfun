@@ -66,8 +66,6 @@ void test_verify_dist_poly3 (lfFixture *lfFix, gconstpointer data)
     lenses[0]->InterpolateDistortion(1.534f, 80.89f, lensCalibDist);
     lfLens* lens = new lfLens();
     lens->AddCalibDistortion(&lensCalibDist);
-    lens->CropFactor = lenses[0]->CropFactor;
-    lens->AspectRatio = lenses[0]->AspectRatio;
 
     mod = new lfModifier (lens, 80.89f, 1.534f, lfFix->img_width, lfFix->img_height, LF_PF_F32, false);
     mod->EnableDistortionCorrection();
