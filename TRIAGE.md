@@ -28,16 +28,12 @@ Scope: open issues and PRs on `lensfun/lensfun`, filtered to actionable code/beh
 | #2743 | acm↔pa vignetting conversion formula | 7m | Discussion | Modeling gap |
 | #2384 | Video mode crop factor | 1y10m | Discussion | Modeling gap |
 | #1172 | Separate database repository | 6y5m | Discussion | Strategic; 28 comments |
-| #2541 | Google Pixel 9 Pro | 1y1m | Data request | Phone profile |
-| #1948 | OnePlus 10 Pro 5G | 3y10m | Data request | Phone |
 | #1304 | Sony lens model | 5y11m | Discussion | EXIF/model identification |
 
 ## Pull requests
 
 | # | Title | Age | Status | Notes |
 |---|---|---|---|---|
-| #2875 | Canon EF 55-200mm II USM | 0m | Actionable | New profile |
-| #2781 | Canon MP-E 65mm 1-5x Macro | 5m | Actionable | New profile |
 | #2819 | [codex] Update LCP converter | 3m | Actionable | Many commits; verify count |
 | #2687 | Modernize calibration tool | 8m | Actionable | Python 3.9+ |
 | #2768 | Table-filter for lens list HTML | 5m | Actionable | Docs UX |
@@ -46,13 +42,7 @@ Scope: open issues and PRs on `lensfun/lensfun`, filtered to actionable code/beh
 | #2176 | STL helper templates | 2y7m | Partially applied (in fork) | square/absolute done |
 | #2163 | Modernize lfMount | 2y8m | Actionable | Large; needs review |
 | #2138 | Smart pointers for calibrations | 2y9m | Actionable | Needs rework (shared vs unique) |
-| #2408 | 7Artisans APS-C 25mm | 1y8m | Stale | Needs review |
-| #2004 | Samyang 12mm AF vignetting | 3y7m | Stale | Needs review |
-| #1588 | Rename sigma 150-600 contemporary | 4y9m | Actionable | Closes #1586 |
-| #1151 | User-profiles priority | 6y5m | Stale | DB priority logic |
-| #1039 | Sigma 18-300mm alias | 6y11m | Stale | Profile alias |
-| #1351 | Match lib name with soname | 5y8m | Stale | Packaging |
-| #1166 | Make plots more readable | 6y5m | Stale | Calibration tooling |
+
 
 ## Cross-cutting blockers
 
@@ -66,12 +56,11 @@ Scope: open issues and PRs on `lensfun/lensfun`, filtered to actionable code/beh
 ## Top recommendations (remaining)
 
 1. **Cut a release** — highest impact; consumers blocked on a tag.
-2. **Fix #2052, #1896, #1586** — identification bugs, actionable data fixes.
-3. **Fix #1876** — DB location priority on Windows.
-4. **Fix #671, #1285** — search/crash bugs.
-5. **Merge #2687, #2819, #2768** — recent tooling/docs PRs.
-6. **Modernize: #2160, #2169** — small, additive.
-7. **Decide #1172, #2384, #2743** — strategic modeling gaps.
+2. **Fix #1876** — DB location priority on Windows.
+3. **Fix #671, #1285** — search/crash bugs.
+4. **Merge #2687, #2819, #2768** — recent tooling/docs PRs.
+5. **Modernize: #2160, #2169** — small, additive.
+6. **Decide #1172, #2384, #2743** — strategic modeling gaps.
 
 ## Citations
 
