@@ -22,7 +22,7 @@ jobs:
       - name: Install python build
         run: python -m pip install --upgrade pip build
       - name: Configure CMake
-        run: cmake -B build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -DBUILD_TESTS=ON
+        run: cmake -B build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -DBUILD_TESTS=ON -DINSTALL_PYTHON_MODULE=OFF -DPython3_EXECUTABLE=$(which python)
       - name: Build
         run: cmake --build build --config ${{env.BUILD_TYPE}}
       - name: Test
