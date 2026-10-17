@@ -19,7 +19,7 @@ int main ()
     /* Initialize locale in order to get translated names */
     setlocale (LC_ALL, "");
 
-    ldb = lf_db_new ();
+    ldb = lf_db_create ();
     if (!ldb)
     {
         fprintf (stderr, "Failed to create database\n");

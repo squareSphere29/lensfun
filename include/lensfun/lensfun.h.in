@@ -1856,6 +1856,9 @@ extern const char* const lf_db_user_updates_location;
  */
 LF_EXPORT lfDatabase *lf_db_create (void);
 
+/** @deprecated Use lf_db_create() instead. Kept for ABI compatibility. */
+DEPRECATED LF_EXPORT lfDatabase *lf_db_new (void);
+
 /**
  * @brief Destroy the database object.
  *

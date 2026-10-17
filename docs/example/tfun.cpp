@@ -147,7 +147,7 @@ int main (int argc, char **argv)
     }
 
 
-    lfDatabase *ldb = lf_db_new ();
+    lfDatabase *ldb = lf_db_create ();
     ldb->Load ();
 
     if (opts.Lens == NULL)
