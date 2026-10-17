@@ -26,7 +26,8 @@ and vignetting.
 The interface is defined both using C++ style and plain C.
 The C interface is a wrapper around the C++ classes.
 
-GitHub Project: https://github.com/lensfun/lensfun
+This fork: https://github.com/squareSphere29/lensfun
+Original GitHub Project: https://github.com/lensfun/lensfun
 GitHub Page: https://lensfun.github.io/
 
 
