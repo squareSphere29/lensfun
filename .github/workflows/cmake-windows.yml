@@ -38,4 +38,18 @@ jobs:
     - name: Test
       working-directory: ${{github.workspace}}/build
       run: ctest -C ${{env.BUILD_TYPE}} --output-on-failure
+
+    - name: Consumer header smoke test
+      shell: pwsh
+      run: |
+        $vswhere = "${env:ProgramFiles(x86)}\Microsoft Visual Studio\Installer\vswhere.exe"
+        $vsPath = & $vswhere -latest -products * -requires Microsoft.VisualStudio.Component.VC.Tools.x86.x64 -property installationPath
+        $vcvars = Join-Path $vsPath "VC\Auxiliary\Build\vcvarsall.bat"
+        $include = "${{github.workspace}}\install\include"
+        $cSrc = "#include <lensfun/lensfun.h>`nint main(void){ return 0; }"
+        $cppSrc = "#include <lensfun/lensfun.h>`nint main(){ return 0; }"
+        Set-Content -Path consumer.c -Value $cSrc
+        Set-Content -Path consumer.cpp -Value $cppSrc
+        cmd /c "`"$vcvars`" x64 && cl /I`"$include`" /c consumer.c && cl /std:c++17 /I`"$include`" /c consumer.cpp"
+        if ($LASTEXITCODE -ne 0) { throw "consumer header smoke test failed" }
       

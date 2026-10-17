@@ -69,5 +69,14 @@ ADD_EXECUTABLE(test_lffuzzystrcmp test_lffuzzystrcmp.cpp)
 TARGET_LINK_LIBRARIES(test_lffuzzystrcmp lensfun ${COMMON_LIBS})
 ADD_TEST(NAME test_lffuzzystrcmp COMMAND test_lffuzzystrcmp)
 
+# Smoke test: public header compiles for C and C++ consumers (guards #2676-class regressions).
+ADD_EXECUTABLE(test_public_header_cpp test_public_header.cpp)
+TARGET_LINK_LIBRARIES(test_public_header_cpp lensfun ${COMMON_LIBS})
+ADD_TEST(NAME Public_header_cpp COMMAND test_public_header_cpp)
+
+ADD_EXECUTABLE(test_public_header_c test_public_header.c)
+TARGET_LINK_LIBRARIES(test_public_header_c lensfun ${COMMON_LIBS})
+ADD_TEST(NAME Public_header_c COMMAND test_public_header_c)
+
 FIND_PACKAGE(Python3 COMPONENTS Interpreter REQUIRED)
 ADD_TEST(NAME Database_integrity COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/tools/check_database/check_database.py ${CMAKE_SOURCE_DIR}/data/db)
