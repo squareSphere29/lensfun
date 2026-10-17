@@ -155,6 +155,29 @@ Reviewed the 6 open modernization PRs. None apply cleanly to current master with
 
 General recommendation: close or rebase anything that no longer applies rather than letting PRs rot. Do not batch them into one mega-merge.
 
+## GLib-to-STL migration scope (research)
+
+Inventory of GLib usage in `libs/` (counts of GLib-specific symbols, excluding `glib.h` include):
+
+| File | GLib refs | Primary symbols |
+|---|---|---|
+| `database.cpp` | 60 | `g_markup` (19), `g_string`/`GString` (15), `gchar` (14), `g_set_error` (13), `g_free` (6), `gint`/`gpointer` (6), `g_new` (3) |
+| `auxfun.cpp` | 24 | `g_ptr_array`/`GPtrArray` (12), `gchar` (4), `g_free` (4), `g_string`/`GString` (3), `g_malloc` (2), `g_strdup` (1), `g_markup` (1) |
+| `lensfunprv.h` | 12 | `gchar`, `gint`, `guint`, `GPtrArray` (lfFuzzyStrCmp) |
+| `cpuid.cpp` | 8 | `guint` |
+| `camera.cpp`, `lens.cpp`, `mod-color*.cpp` | 2-3 each | `gchar`, `gint` |
+
+Migration map:
+
+- `gchar*`/`gchar**` → `const char*`/`std::string`/`std::vector<std::string>`.
+- `GString` + `g_string_append`/`g_markup_printf_escaped` → `std::ostringstream` or `std::string` with a small XML-escape helper.
+- `GPtrArray` (in `lfFuzzyStrCmp`) → `std::vector<std::string>`.
+- `g_set_error` + `GError` → return codes or `std::optional`/exceptions (decide at boundary).
+- `g_malloc`/`g_new`/`g_free`/`g_strdup` → `new`/`delete`/`std::vector`/`std::string`.
+- `gint`/`guint`/`gpointer` → `int`/`unsigned`/`void*`.
+
+Effort: ~84 call sites across 2 files dominate; the rest are type aliases. This is a medium refactor, not a one-liner. It should follow #2163's pattern (keep a C-API-compatible pointer vector, modernize internals). GLib can be dropped from the link line only after `g_markup` XML parsing (if any) is also replaced — check whether `g_markup_parse_context` is used (currently only `g_markup_printf_escaped` for output, so parsing is via libxml2/xmllint, not GLib). If confirmed, GLib becomes removable entirely.
+
 ## Where things live
 
 - Public API: `include/lensfun/lensfun.h.in`
