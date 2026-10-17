@@ -44,5 +44,5 @@ jobs:
         run: |
           printf '#include <lensfun/lensfun.h>\nint main(void){ return 0; }\n' > /tmp/consumer.c
           printf '#include <lensfun/lensfun.h>\nint main(){ return 0; }\n' > /tmp/consumer.cpp
-          gcc -x c -I ${{github.workspace}}/install/include -c /tmp/consumer.c -o /tmp/consumer_c.o
-          g++ -std=c++17 -I ${{github.workspace}}/install/include -c /tmp/consumer.cpp -o /tmp/consumer_cpp.o
+          gcc -x c -I install/include -c /tmp/consumer.c -o /tmp/consumer_c.o
+          g++ -std=c++17 -I install/include -c /tmp/consumer.cpp -o /tmp/consumer_cpp.o
