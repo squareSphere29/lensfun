@@ -14,6 +14,7 @@ lfCamera::lfCamera ()
     Variant = NULL;
     Mount = NULL;
     CropFactor = 0.0f;
+    Score = 0;
 }
 
 lfCamera::~lfCamera ()
@@ -31,6 +32,7 @@ lfCamera::lfCamera (const lfCamera &other)
     Variant = lf_mlstr_dup (other.Variant);
     Mount = g_strdup (other.Mount);
     CropFactor = other.CropFactor;
+    Score = other.Score;
 }
 
 lfCamera &lfCamera::operator = (const lfCamera &other)
@@ -43,6 +45,7 @@ lfCamera &lfCamera::operator = (const lfCamera &other)
     Variant = lf_mlstr_dup (other.Variant);
     _lf_setstr (&Mount, other.Mount);
     CropFactor = other.CropFactor;
+    Score = other.Score;
     return *this;
 }
 

@@ -80,6 +80,9 @@ void lfMount::AddCompat (const char *val)
 
 const char* const* lfMount::GetCompats() const
 {
+    // Ensure the C-API trailing NULL sentinel is present regardless of
+    // whether every mutator remembered to terminate.
+    _lf_terminate_vec (const_cast<std::vector<char*>&>(MountCompat));
     return MountCompat.data();
 }
 

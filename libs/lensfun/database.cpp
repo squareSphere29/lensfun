@@ -894,10 +894,10 @@ lfError lfDatabase::Save (char*& xml, size_t& data_size) const
         g_string_append (output, "\t<mount>\n");
         _lf_xml_printf_mlstr (output, "\t\t", "name",
                                     m->Name);
-        if (m->Compat)
-            for (int j = 0; m->Compat [j]; j++)
+        if (auto compats = m->GetCompats())
+            for (int j = 0; compats [j]; j++)
                 _lf_xml_printf (output, "\t\t<compat>%s</compat>\n",
-                                m->Compat [j]);
+                                compats [j]);
         g_string_append (output, "\t</mount>\n\n");
     }
 

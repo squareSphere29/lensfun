@@ -657,29 +657,13 @@ lfLensCalibrationSet* lfLens::GetCalibrationSetForAttributes(const lfLensCalibAt
 {
     // Always use Calibrations[0] for now, achieves backwards
     // compatibility to Lensfun API before 0.4.0
-    {
-        if (Calibrations.empty())
-            Calibrations.emplace_back(new lfLensCalibrationSet(lcattr));
-        _lf_terminate_vec(Calibrations);
-
-        Calibrations[0]->Attributes.CropFactor = CropFactor;
-        Calibrations[0]->Attributes.AspectRatio = AspectRatio;
-        return Calibrations[0];
-    }
-
-    // try to find a matching calibset
-    for (auto c: Calibrations)
-    {
-        if (c->Attributes == lcattr)
-            return c;
-    }
-
-    // nothing found, create a new one
-    Calibrations.emplace_back(new lfLensCalibrationSet(lcattr));
+    if (Calibrations.empty())
+        Calibrations.emplace_back(new lfLensCalibrationSet(lcattr));
     _lf_terminate_vec(Calibrations);
 
-    // return pointer
-    return Calibrations.back();
+    Calibrations[0]->Attributes.CropFactor = CropFactor;
+    Calibrations[0]->Attributes.AspectRatio = AspectRatio;
+    return Calibrations[0];
 }
 
 void lfLens::AddCalibDistortion (const lfLensCalibDistortion *plcd)
@@ -746,7 +730,16 @@ void lfLens::AddCalibFov (const lfLensCalibFov *plcf)
 
 void lfLens::RemoveCalibrations()
 {
+    for (auto *c : Calibrations)
+        delete c;
     Calibrations.clear();
+    _lf_terminate_vec(Calibrations);
+
+    CalibDistortion = NULL;
+    CalibTCA = NULL;
+    CalibVignetting = NULL;
+    CalibCrop = NULL;
+    CalibFov = NULL;
 }
 
 static int __insert_spline (const void **spline, float *spline_dist, float dist, const void *val)
@@ -1321,6 +1314,8 @@ const lfLensCalibrationSet* const* lfLens::GetCalibrationSets() const
 
 const char* const* lfLens::GetMountNames() const
 {
+    // Ensure the C-API trailing NULL sentinel is present.
+    _lf_terminate_vec (const_cast<std::vector<char*>&>(MountNames));
     return MountNames.data();
 }
 
