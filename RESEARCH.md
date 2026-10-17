@@ -142,6 +142,19 @@ Conclusion: there is no incumbent "better fork" to build on. A new fork that wan
 - Verified: full build (`cmake --build`) succeeds (71/71); `ctest` 29/29 pass (including the 2 new header smoke tests); trivial consumer compiles as both C (`gcc -x c`) and C++ (`g++`) against the installed header with no "I don't know how to change symbol visibility" error; `check_database.py` passes.
 
 Remaining for #1 (release management, requires upstream coordination): backport this to a 0.3.4.x stable branch and cut a patched release (not from master, which is 0.3.99 alpha). The code and CI changes above are complete.
+## Triage of stalled modernization PRs
+
+Reviewed the 6 open modernization PRs. None apply cleanly to current master without a rebase; all are 2+ years old except #2687.
+
+- **#2176 "replace custom helper templates with C++ STL"** (Mar 2024, approved by CAHEK7). Replaces `clampd`/`absolute`/`square` with `std::clamp`/`std::hypot`/cmath. C++17 already required. Low risk, small diff. **Action: rebase and merge.**
+- **#2163 "Modernize lfMount"** (Feb 2024, 13 commits). Converts `char*` to `std::string`, removes deprecated `lf_mount_new`, keeps a separate `MountCompatPtrs` vector for the C API, adds a C-API test. Establishes the pattern for keeping C compatibility while modernizing internals. Active review discussion. **Action: needs maintainer review; adopt its pattern for other classes.**
+- **#2138 "Use smart pointers for lfLens Calibrations"** (Jan 2024). Changes `std::vector<lfLensCalibrationSet*>` to `shared_ptr`, which breaks contiguous memory for `GetCalibrationSets()` (returns `lfLensCalibrationSet**`). Contributor's workaround (a malloc'd C-API array kept in sync) adds complexity and CAHEK7 requested changes that were not resolved. **Action: defer until the ownership model is agreed; do not merge as-is.**
+- **#2160 "Add C interface for EnableDistortionCorrection"** (Feb 2024). Small, additive C wrapper. **Action: review and merge if still applicable.**
+- **#2687 "Modernize calibration tool"** (Feb 2026). Recent, touches `tools/calibrate`. **Action: review.**
+- **#2169 "Add clang-tidy CI action"** (Feb 2024). Adds `.clang-tidy` (already present in CAHEK7's fork). **Action: low priority; nice-to-have.**
+
+General recommendation: close or rebase anything that no longer applies rather than letting PRs rot. Do not batch them into one mega-merge.
+
 ## Where things live
 
 - Public API: `include/lensfun/lensfun.h.in`
