@@ -46,7 +46,7 @@ Scope: all 88 open issues and 18 open PRs on `lensfun/lensfun`. Categorization i
 
 | # | Title | Author | Age | Status | Notes |
 |---|---|---|---|---|---|
-| [#2676](https://github.com/lensfun/lensfun/issues/2676) | CMake build for 0.3.4 broken on Windows | letmaik | 8m | Actionable | `PLATFORM_WINDOWS` removed; blocks lensfunpy; reportedly fixed in master (verify before release) |
+| [#2676](https://github.com/lensfun/lensfun/issues/2676) | CMake build for 0.3.4 broken on Windows | letmaik | 8m | Fixed (in fork) | `_WIN32` in header + CI smoke tests |
 | [#2110](https://github.com/lensfun/lensfun/issues/2110) | Xcode static lib compile error when calling lfCamera | Dedicatee | 3y1m | Stale | macOS/Xcode consumer build issue (not Windows) |
 | [#1834](https://github.com/lensfun/lensfun/issues/1834) | Look for Python using find_package() | moubctez | 4y4m | Actionable | Patch provided; improves multi-Python builds |
 | [#1535](https://github.com/lensfun/lensfun/issues/1535) | Missing scipy and numpy after install | robertl78 | 4y10m | Stale | Windows calibration environment support |
@@ -93,7 +93,7 @@ Scope: all 88 open issues and 18 open PRs on `lensfun/lensfun`. Categorization i
 | [#1127](https://github.com/lensfun/lensfun/issues/1127) | Calibration upload 24fd4e | bronger | 6y7m | Data request | Stale |
 | [#1117](https://github.com/lensfun/lensfun/issues/1117) | Calibration upload f0cc69 | bronger | 6y7m | Data request | Stale |
 | [#1076](https://github.com/lensfun/lensfun/issues/1076) | Vignetting Samyang 85mm F1.8 | gscholz | 6y9m | Data request | Stale |
-| [#1062](https://github.com/lensfun/lensfun/issues/1062) | Duplicate camera search results | letmaik | 6y9m | Actionable | Stable release milestone |
+| [#1062](https://github.com/lensfun/lensfun/issues/1062) | Duplicate camera search results | letmaik | 6y9m | Fixed (in fork) | Initialized Score in lfCamera ctor/copy/assign |
 | [#1057](https://github.com/lensfun/lensfun/issues/1057) | Calibration data Samyang 14mm | OSteinbach | 6y10m | Data request | Stale |
 | [#1045](https://github.com/lensfun/lensfun/issues/1045) | Calibration upload 3a4dbf | bronger | 6y10m | Data request | Stale |
 | [#1024](https://github.com/lensfun/lensfun/issues/1024) | Canon EF 35-80 distortion calibration | edsvo | 6y11m | Data request | Stale |
@@ -115,11 +115,11 @@ Scope: all 88 open issues and 18 open PRs on `lensfun/lensfun`. Categorization i
 
 | # | Title | Author | Age | Status | Notes |
 |---|---|---|---|---|---|
-| [#2862](https://github.com/lensfun/lensfun/issues/2862) | undefined symbol in consumer: lf_db_new | kiefernforst | 1m | Actionable | Breaks GIMP/gegl; `lf_db_new`→`lf_db_create` rename broke ABI; decide compat alias vs. document rename |
+| [#2862](https://github.com/lensfun/lensfun/issues/2862) | undefined symbol in consumer: lf_db_new | kiefernforst | 1m | Fixed (in fork) | Added deprecated `lf_db_new()` compat alias |
 | [#1329](https://github.com/lensfun/lensfun/issues/1329) | module 'lensfun' has no attribute system_db_update_path | dimk1 | 5y10m | Stale | Maintainer says likely not relevant |
 | [#1292](https://github.com/lensfun/lensfun/issues/1292) | Should distortion admit distance parameter | FreddieWitherden | 5y11m | Discussion | API extension |
 | [#984](https://github.com/lensfun/lensfun/issues/984) | RFC UniqueCameraModel for dual-camera phones | junkyardsparkle | 7y1m | Discussion | API/identification |
-| [#945](https://github.com/lensfun/lensfun/issues/945) | Scaling factor API changes break edits | jakubfi | 7y2m | Actionable | High impact; compat fix in PR #2639 |
+| [#945](https://github.com/lensfun/lensfun/issues/945) | Scaling factor API changes break edits | jakubfi | 7y2m | Fixed (in fork) | Legacy scaling flag applied (PR #2639) |
 | [#508](https://github.com/lensfun/lensfun/issues/508) | Test new API in application context | seebk | 7y7m | Stale | Discuss |
 | [#506](https://github.com/lensfun/lensfun/issues/506) | How to flag enabled modifications? | seebk | 7y7m | Stale | Discuss |
 | [#505](https://github.com/lensfun/lensfun/issues/505) | Should LF_MODIFY_GEOMETRY be LF_MODIFY_PROJECTION? | seebk | 7y7m | Stale | Discuss |
@@ -133,7 +133,7 @@ Scope: all 88 open issues and 18 open PRs on `lensfun/lensfun`. Categorization i
 |---|---|---|---|---|---|
 | [#2587](https://github.com/lensfun/lensfun/issues/2587) | No py3exiv2 for Ubuntu LTS 24.04? | mawob | 1y0m | Stale | Calibration tool dependency |
 | [#2496](https://github.com/lensfun/lensfun/issues/2496) | debian packaging should use python directly | wgoetz | 1y2m | Actionable | Packaging fix |
-| [#2450](https://github.com/lensfun/lensfun/issues/2450) | git timestamp in profile conversion breaks CI | paperdigits | 1y6m | Actionable | Remove git dependency |
+| [#2450](https://github.com/lensfun/lensfun/issues/2450) | git timestamp in profile conversion breaks CI | paperdigits | 1y6m | Fixed (in fork) | Replaced git-log with file mtime (+ --timestamp override) |
 | [#2351](https://github.com/lensfun/lensfun/issues/2351) | setuptools does not like me | rubyFeedback | 1y11m | Stale | Build environment support |
 | [#2168](https://github.com/lensfun/lensfun/issues/2168) | Setup clang-tidy and clang-format CI | CAHEK7 | 2y7m | Actionable | PR #2169 open |
 | [#2164](https://github.com/lensfun/lensfun/issues/2164) | Enable code coverage | payano | 2y8m | Stale | CI enhancement |
@@ -150,7 +150,7 @@ Scope: all 88 open issues and 18 open PRs on `lensfun/lensfun`. Categorization i
 |---|---|---|---|---|---|
 | [#1068](https://github.com/lensfun/lensfun/issues/1068) | Update changelog with added/modified profiles | seebk | 6y9m | Stale | Maintenance |
 | [#501](https://github.com/lensfun/lensfun/issues/501) | Update Doxygen comments and documentation | seebk | 7y7m | Stale | Stable release milestone |
-| [#1418](https://github.com/lensfun/lensfun/issues/1418) | Conflicting license in lensfun.h | SRHMorris | 5y5m | Actionable | License header mismatch |
+| [#1418](https://github.com/lensfun/lensfun/issues/1418) | Conflicting license in lensfun.h | SRHMorris | 5y5m | Fixed (in fork) | Header updated to LGPL-3.0 |
 
 ### Other
 
@@ -184,7 +184,7 @@ Scope: all 88 open issues and 18 open PRs on `lensfun/lensfun`. Categorization i
 
 | # | Title | Author | Age | Status | Notes |
 |---|---|---|---|---|---|
-| [#2176](https://github.com/lensfun/lensfun/pull/2176) | replace custom helper templates with C++ STL | jonas-ott | 2y7m | Actionable | Approved; requires C++17 |
+| [#2176](https://github.com/lensfun/lensfun/pull/2176) | replace custom helper templates with C++ STL | jonas-ott | 2y7m | Partially applied (in fork) | square/absolute replaced; clampd retained (max==0 semantics) |
 | [#2163](https://github.com/lensfun/lensfun/pull/2163) | Modernize lfMount | CAHEK7 | 2y8m | Actionable | Large; in progress |
 | [#2138](https://github.com/lensfun/lensfun/pull/2138) | Use smart pointers for lfLens Calibrations | payano | 2y9m | Actionable | Needs rework (shared vs unique) |
 
@@ -192,7 +192,7 @@ Scope: all 88 open issues and 18 open PRs on `lensfun/lensfun`. Categorization i
 
 | # | Title | Author | Age | Status | Notes |
 |---|---|---|---|---|---|
-| [#2639](https://github.com/lensfun/lensfun/pull/2639) | Add flag to reproduce legacy distortion scaling | seebk | 11m | Actionable | Addresses #945; needs review/merge |
+| [#2639](https://github.com/lensfun/lensfun/pull/2639) | Add flag to reproduce legacy distortion scaling | seebk | 11m | Applied (in fork) | Cherry-picked into fork |
 | [#2160](https://github.com/lensfun/lensfun/pull/2160) | Add C interface for EnableDistortionCorrection | CAHEK7 | 2y8m | Actionable | Needs TCA/vignetting additions |
 
 ### CI/tooling
