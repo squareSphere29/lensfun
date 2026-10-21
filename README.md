@@ -1,8 +1,8 @@
 
-[![CMake-Linux](https://github.com/lensfun/lensfun/actions/workflows/cmake-linux.yml/badge.svg)](https://github.com/lensfun/lensfun/actions/workflows/cmake-linux.yml)
-[![CMake-macOS](https://github.com/lensfun/lensfun/actions/workflows/cmake-macos.yml/badge.svg)](https://github.com/lensfun/lensfun/actions/workflows/cmake-macos.yml)
-[![CMake-MSYS2](https://github.com/lensfun/lensfun/actions/workflows/cmake-msys2.yml/badge.svg)](https://github.com/lensfun/lensfun/actions/workflows/cmake-msys2.yml)
-[![CMake-Windows](https://github.com/lensfun/lensfun/actions/workflows/cmake-windows.yml/badge.svg)](https://github.com/lensfun/lensfun/actions/workflows/cmake-windows.yml)
+[![CMake-Linux](https://github.com/squareSphere29/lensfun/actions/workflows/cmake-linux.yml/badge.svg)](https://github.com/squareSphere29/lensfun/actions/workflows/cmake-linux.yml)
+[![CMake-macOS](https://github.com/squareSphere29/lensfun/actions/workflows/cmake-macos.yml/badge.svg)](https://github.com/squareSphere29/lensfun/actions/workflows/cmake-macos.yml)
+[![CMake-MSYS2](https://github.com/squareSphere29/lensfun/actions/workflows/cmake-msys2.yml/badge.svg)](https://github.com/squareSphere29/lensfun/actions/workflows/cmake-msys2.yml)
+[![CMake-Windows](https://github.com/squareSphere29/lensfun/actions/workflows/cmake-windows.yml/badge.svg)](https://github.com/squareSphere29/lensfun/actions/workflows/cmake-windows.yml)
 
 WHAT IS IT
 ----------
@@ -26,7 +26,8 @@ and vignetting.
 The interface is defined both using C++ style and plain C.
 The C interface is a wrapper around the C++ classes.
 
-GitHub Project: https://github.com/lensfun/lensfun
+This fork: https://github.com/squareSphere29/lensfun
+Original GitHub Project: https://github.com/lensfun/lensfun
 GitHub Page: https://lensfun.github.io/
 
 
