@@ -24,6 +24,7 @@ permissions:
 jobs:
 
   build:
+    if: ${{ secrets.PUSH_SECRET != '' }}
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
